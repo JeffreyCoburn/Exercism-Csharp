@@ -1,2 +1,2 @@
 # Exercism-Csharp
-Exercism C# track exercises exercised
+C# track Exercism exercises exercised
