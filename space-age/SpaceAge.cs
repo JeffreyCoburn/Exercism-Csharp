@@ -21,7 +21,7 @@ public class SpaceAge
 
     public double OnSaturn() => earthYears/29.447498;
 
-    public double OnUranus() => earthYears/84.016846
+    public double OnUranus() => earthYears/84.016846;
 
-    public double OnNeptune() => earthYears/164.79132
+    public double OnNeptune() => earthYears/164.79132;
 }
