@@ -11,12 +11,11 @@ public class HighScores
         _scores=list;
     }
 
-    public List<int> Scores() => _scores;
+    public IEnumerable<int> Scores() => _scores;
 
     public int Latest() => _scores.Last();
 
     public int PersonalBest() => _scores.Max();
 
-    public List<int> PersonalTopThree() => _scores.OrderByDescending(x=>x).Take(3).ToList();
-
+    public IEnumerable<int> PersonalTopThree() => _scores.OrderByDescending(x=>x).Take(3).ToList();
 }
