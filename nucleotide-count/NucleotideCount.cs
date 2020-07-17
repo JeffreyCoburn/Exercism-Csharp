@@ -14,10 +14,10 @@ public static class NucleotideCount
                 { 'T', 0 }
             };
 
-        for (int i=0; i < sequence.Length; i++)
+        foreach (char v in sequence)
         {
-            if (count.ContainsKey(sequence[i]))
-                count[sequence[i]]++;
+            if (count.ContainsKey(v))
+                count[v]++;
             else
                 throw new ArgumentException("Invalid character in sequence."); 
         }
