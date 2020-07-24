@@ -32,6 +32,10 @@ public class Robot
     public void Reset()
     {
         int index = rnd.Next(0,_names.Count);
+        if (_name != null)
+        {
+            _names.Add(_name);
+        }
         _name = _names[index];
         _names.RemoveAt(index);
     }
