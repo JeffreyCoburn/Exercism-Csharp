@@ -19,7 +19,7 @@ public class Robot
     }
     public Robot()
     {
-        Reset();
+        SetName();
     }
     public string Name
     {
@@ -31,6 +31,15 @@ public class Robot
 
     public void Reset()
     {
+        SetName();
+    }
+
+    private string _name; 
+    private static IList<string> _names = new List<string>();
+    private static Random rnd = new Random();
+
+    private void SetName()
+    {
         int index = rnd.Next(0,_names.Count);
         if (_name != null)
         {
@@ -39,8 +48,4 @@ public class Robot
         _name = _names[index];
         _names.RemoveAt(index);
     }
-
-    private string _name; 
-    private static IList<string> _names = new List<string>();
-    private static Random rnd = new Random();
 }
