@@ -48,4 +48,5 @@ public class RobotNameTests
             Assert.True(names.Add(robot.Name));
         }
     }
+
 }
