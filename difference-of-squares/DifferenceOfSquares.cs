@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 public static class DifferenceOfSquares
 {
@@ -8,7 +8,11 @@ public static class DifferenceOfSquares
 
     public static int CalculateSumOfSquares(int max)
     {
-        //var test = Enumerable.Range(1,max).AsParallel().ForAll( x => Math.Pow(x,2));
+        /* Parallel was slower
+        int result = 0;
+        Parallel.ForEach(Enumerable.Range(1,max).ToArray(), 
+                                        x => result += (int) Math.Pow(x,2));
+        return result; */
         return (int) Enumerable.Range(1,max).Select(x => Math.Pow(x,2)).Sum();
     }
 
