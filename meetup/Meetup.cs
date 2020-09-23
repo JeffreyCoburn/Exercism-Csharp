@@ -2,56 +2,45 @@ using System;
 
 public enum Schedule
 {
-    Teenth,
-    First,
-    Second,
-    Third,
-    Fourth,
-    Last
+    First = 0,
+    Second = 7,
+    Third = 14,
+    Fourth = 21,
+    Teenth =22,
+    Last = 23
 }
 
 public class Meetup
 {
-private static int Month;
-private static int Year;
+    private DateTime date;
+
     public Meetup(int month, int year)
     {
-        Month = month;
-        Year = year;
+        date = new DateTime(year,month,1);
     }
 
     public DateTime Day(DayOfWeek dayOfWeek, Schedule schedule)
     {
-        DateTime date = new DateTime(Year,Month,1);
-
-        if (schedule == Schedule.Teenth)
+        int offset = dayOfWeek - date.DayOfWeek;
+        if (offset < 0) 
         {
-            for (int i=12; i<19; i++)
-            {                    
-                if (date.AddDays(i).DayOfWeek == dayOfWeek)
-                {
-                    return date.AddDays(i);
-                }
-            }
+            offset += 7;
         }
+        offset++;
 
-        if (schedule == Schedule.Last)
+        int day;
+        switch (schedule)
         {
-            date = new DateTime(date.Year,
-                                    date.Month,
-                                    DateTime.DaysInMonth(date.Year,date.Month));
-            while (date.DayOfWeek != dayOfWeek)
-            {
-                date = date.AddDays(-1);
-            }
-            return date;
+            case Schedule.Teenth: 
+                day = (offset+1)%7 + 13;
+                break;
+            case Schedule.Last:
+                day = ((DateTime.DaysInMonth(date.Year,date.Month)-offset) / 7) * 7 + offset;
+                break;
+            default:
+                day = offset + (int)schedule;
+                break;
         }
-
-        while (date.DayOfWeek != dayOfWeek)
-        {
-            date = date.AddDays(1);
-        }
-        date = date.AddDays(((int)schedule-1)*7);
-        return date;
+        return new DateTime(date.Year,date.Month,day);
     }
 }
