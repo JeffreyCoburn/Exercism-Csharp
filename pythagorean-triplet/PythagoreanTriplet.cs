@@ -11,8 +11,7 @@ public static class PythagoreanTriplet
         int c = 0;
         for (a = 1; a < sum / 3; a++) {
             for (b = a; b < sum / 2; b++) {
-                c = sum - a - b;
-        
+                c = sum - a - b;        
                 if (a * a + b * b == c * c) {
                     triplets.Add((a,b,c));
                 }
