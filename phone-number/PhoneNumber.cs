@@ -8,12 +8,6 @@ public class PhoneNumber
                                                 .Where(c => char.IsDigit(c))
                                                 .ToArray())                                    
                                             .TrimStart('1');
-        // Why doesn't this work?
-        // string cleanPhoneNumber = new string (phoneNumber  
-        //                             .Where(c => char.IsDigit(c))
-        //                             .ToArray()
-        //                             .ToString()
-        //                             .TrimStart('1'));
 
         if (cleanPhoneNumber.Length != 10)
         {
