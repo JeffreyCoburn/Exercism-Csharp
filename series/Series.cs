@@ -4,13 +4,9 @@ public static class Series
 {
     public static string[] Slices(string numbers, int sliceLength)
     {
-        if (sliceLength > numbers.Length)
+        if (sliceLength < 1 || sliceLength > numbers.Length)
         { 
-            throw new ArgumentException("Slice length can't be greater than the length of the string.");
-        }
-        if (sliceLength < 1)
-        {
-            throw new ArgumentException("Slice length must be at least 1.");
+            throw new ArgumentException("Slice length must be at least 1 and can't be greater than the length of the string.");
         }
         if (numbers == null)
         { 
