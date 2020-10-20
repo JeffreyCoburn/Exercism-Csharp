@@ -1,6 +1,6 @@
 using System;
 
-public class Clock : IEquatable<Clock>
+public struct Clock : IEquatable<Clock>
 {
     private const int MinutesInOneDay = 24 *60;
     public int Minutes { get; }
@@ -16,15 +16,9 @@ public class Clock : IEquatable<Clock>
         Minutes = minutes;
     }
 
-    public Clock Add(int minutesToAdd)
-    {
-        return new Clock (0, Minutes + minutesToAdd);
-    }
+    public Clock Add(int minutesToAdd) => new Clock (0, Minutes + minutesToAdd);
 
-    public Clock Subtract(int minutesToSubtract)
-    {
-        return Add(minutesToSubtract * -1);
-    }
+    public Clock Subtract(int minutesToSubtract) => Add(minutesToSubtract * -1);
 
     public override string ToString()
     {
@@ -33,8 +27,5 @@ public class Clock : IEquatable<Clock>
         return ($"{hours:D2}:{minutes:D2}");
     }
 
-    public bool Equals(Clock clock)
-    {
-        return this.Minutes == clock.Minutes;
-    }
+    public bool Equals(Clock clock) => this.Minutes == clock.Minutes;
 }
