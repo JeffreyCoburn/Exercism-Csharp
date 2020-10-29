@@ -11,11 +11,21 @@ public static class AllYourBase
         if (inputDigits.Any(c => c<0)) { throw new ArgumentException("Digits can't be negative"); }
         if (inputDigits.Length == 0) { return new int[] {0}; }
 
-        int number = 0;
-        for (int i = 0; i < inputDigits.Length; i++) {
-            number += inputDigits[i] * Convert.ToInt32(Math.Pow(inputBase, inputDigits.Length - 1 - i));
-        }
+        int number = convertToBaseTen(inputBase,inputDigits);
         
+        return convertBaseTenToAnotherBase(number,outputBase);
+        
+    }
+    private static int convertToBaseTen(int inputBase, int[] inputDigits) {      
+        int number = 0;  
+        for (int i = 0; i < inputDigits.Length; i++) {
+            number += inputDigits[i] * IntPow(inputBase, inputDigits.Length - 1 - i);
+        }
+        return number;
+    }
+    private static int IntPow(int number, int exponent) { return Convert.ToInt32(Math.Pow(number, exponent)); }
+
+    private static int[] convertBaseTenToAnotherBase(int number, int outputBase) {
         if (number == 0) { return new int[] {0}; }
 
         List<int> outputDigits = new List<int>();
@@ -26,5 +36,6 @@ public static class AllYourBase
         outputDigits.Reverse();
 
         return outputDigits.ToArray();
+
     }
 }
