@@ -5,9 +5,8 @@ public static class PascalsTriangle
 {
     public static IEnumerable<IEnumerable<int>> Calculate(int rows)
     {
-        List<int[]> pascalsTriangle = new List<int[]>(); // { {1} };
-        if (rows > 0) { pascalsTriangle.Add(new int[] {1}); }
-        for (int row = 1; row < rows; row++) {
+        List<int[]> pascalsTriangle = new List<int[]>(); 
+        for (int row = 0; row < rows; row++) {
             int[] rowValues = new int[row+1];
             rowValues[0] = 1;
             rowValues[row] = 1;        
