@@ -14,14 +14,9 @@ public static class MatchingBrackets
         Stack<char> startingBrackets = new Stack<char>();
 
         for (int i=0; i < input.Length; i++) {
-            // If character is a starting bracket, add it to the stack
-            if ( brackets.ContainsValue(input[i])) { startingBrackets.Push(input[i]); continue; };
-            // If character is an ending bracket...
-            if ( brackets.ContainsKey(input[i])) {
-                // If the stack is empty, there is an ending bracket with no starting bracket
-                if (startingBrackets.Count == 0) { return false; }
-                // Check if the ending bracket matches the last starting bracket
-                if (startingBrackets.Pop() != brackets[input[i]]) { return false; };
+            if ( brackets.ContainsValue(input[i])) { startingBrackets.Push(input[i]); };
+            if ( brackets.ContainsKey(input[i]) && ((startingBrackets.Count == 0) || (startingBrackets.Pop() != brackets[input[i]]))) {
+                return false; 
             }
         }
 
