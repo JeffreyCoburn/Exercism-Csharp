@@ -24,9 +24,7 @@ public static class MatchingBrackets
         }
 
         // If stack is empty, that means every starting bracket had an ending bracket
-        if (startingBrackets.Count == 0) { return true; }
-        return false;
-
+        return (startingBrackets.Count == 0);
         
     }
 
